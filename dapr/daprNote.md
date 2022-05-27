@@ -36,3 +36,5 @@ dapr init --slim --from-dir C:\daprbundle
 
 
 
+
+

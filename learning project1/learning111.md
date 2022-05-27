@@ -55,3 +55,23 @@
         }
 ```
 
+测试一下插入图片
+
+设置主题,使图片居左
+
+~~~ css
+/*设置图片居左设置*/
+p .md-image:only-child{
+    width: auto;
+    text-align: left;
+}
+~~~
+
+
+
+![image-20220527162015568](learning111.assets/image-20220527162015568.png)
+
+
+
+
+
