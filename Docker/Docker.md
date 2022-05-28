@@ -79,3 +79,13 @@ EOF
 
 
 
+# 2.快速上手Docker
+
+拉取nginx镜像,查看镜像,运行nginx
+
+~~~ shell
+# docker pull nginx
+# docker image ls
+# docker run -d -p 80:80 nginx
+~~~
+

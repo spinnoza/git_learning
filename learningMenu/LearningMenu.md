@@ -114,6 +114,12 @@
 
 [1.如果让你来设计网络](https://mp.weixin.qq.com/s/jiPMUk6zUdOY6eKxAjNDbQ)
 
+[2.k8s+Jenkins+GitLab-自动化部署asp.net core项目](https://www.cnblogs.com/guolianyu/p/9520046.html)
+
+
+
+
+
 
 
 
