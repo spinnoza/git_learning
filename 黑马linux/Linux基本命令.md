@@ -980,6 +980,14 @@ enabled=1
 # yum makecache
 ```
 
+
+
+```shell
+wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
+```
+
+
+
 ## 3、扩展：EPEL源配置
 
 什么是EPEL源？
