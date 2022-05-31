@@ -321,6 +321,12 @@ Microsoft SQL Server 是业内领先的数据库平台之一，SQL Server 2017 �
 
 [2.k8s+Jenkins+GitLab-自动化部署asp.net core项目](https://www.cnblogs.com/guolianyu/p/9520046.html)
 
+[3.跨域的那些事儿](https://mp.weixin.qq.com/s?__biz=MzU0OTExNzYwNg==&mid=2247483685&idx=1&sn=543e9736146405e9e5b37ec5a1c4b448&chksm=fbb58aecccc203faa4517d77e3f0f723896d2cd5c3ddba2c360b0f0a03f0dc873a1df552d563&scene=0&key=72da87db120ba9cf61099ab1aa1018a958a343b288aa45db018dfe9121cff1879fabc215189a94b80df3231def1863854c558191cee62b44b7723f16099866bb8c3922d77f3430599807dfa31f570e9f&ascene=0&uin=MjIxODIxNjA0MA%3D%3D&devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.11.6+build(15G1004)&version=12010110&nettype=WIFI&fontScale=100&pass_ticket=yNbtn1PSEE2%2B4fxr6HsvYzix%2F29VqEk%2FSw%2BUz7LY0%2FJn75cfBnENdWcok3S%2FcXRr)
+
+[4.HTTP HEADER 之 ORIGIN 深入理解](https://zqblog.beaf.tech/http-origin-header/)
+
+
+
 
 
 
