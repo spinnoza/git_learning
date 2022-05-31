@@ -345,3 +345,119 @@
 
 
 
+## 7.Object.defineProperties
+
+
+
+```javascript
+ var sanlun = {
+            name: '三轮车',
+        };
+
+        // sanlun.brand = '金蛙';
+        Object.defineProperties(sanlun, {
+            brand: {
+                value: '金蛙',
+            },
+            price: {
+                set: function(){
+
+                },
+                get: function(){
+                    return 123;
+                }
+            }
+        });
+
+        console.log(sanlun.price);
+```
+
+
+
+## 8.call-apply-bind
+
+~~~javascript
+  function add(a,b,c){
+            console.log(this);
+            console.log(a + b + c);
+        }
+
+        //1. 立即调用
+        // add(1,2,3);
+        //2. call 调用
+        // add.call({}, 2, 3, 4);
+        //3. apply 调用
+        // add.apply({name: '哈喽 apply'}, [3,4,5]);
+
+        //4. bind 方法  返回一个新的函数
+        var obj = {name: '哈喽 bind'};
+        var fn = add.bind(obj);
+        fn(4,5,6);
+~~~
+
+
+
+## 9.let 
+
+~~~javascript
+ //let 声明变量
+        let a;          //字母数字下划线, 首字母不能为数字, 严格区分大小写, 不能使用关键字   驼峰
+        let b = 100;
+        let c,d,e;
+        let f=100,g=200,h=300;
+
+        //let 声明特点
+        //1. 不允许重复声明
+        // let star = '罗志祥';
+        // let star = '小猪';
+        
+        //2. 块儿级作用域  if(){}  else {}  for(){}   {}   function(){}
+        // if(true){
+        //     let girlFriend = '周扬青';
+        // }
+        // console.log(girlFriend);
+
+        //3. 不存在变量提升
+        // console.log(song);
+        // let song = '狐狸精';
+
+        //4. 不影响作用域链
+        // function fn(){
+        //     let dance = '精武门';
+        //     function b(){
+        //         console.log(dance);
+        //     }
+        //     b();
+        // }
+        // fn();
+~~~
+
+
+
+## 10.数组与对象的解构赋值
+
+~~~javascript
+  //解构赋值
+        // const arr = ['宋小宝','刘能','赵四','小沈阳'];
+        // let [song, liu, zhao, xiao] = arr;
+        // console.log(song, liu, zhao, xiao);
+
+        //对象解构赋值
+        const star = {
+            name: '于谦',
+            tags: ['抽烟','喝酒','烫头'],
+            say: function(){
+                console.log('我可以说相声');
+            }
+        };
+        let {name, tags:[chou,he,tang], say} = star;
+
+        // console.log(name);
+        // console.log(tags);
+        // console.log(say);
+
+        console.log(chou)
+        console.log(he)
+        console.log(tang)
+~~~
+
