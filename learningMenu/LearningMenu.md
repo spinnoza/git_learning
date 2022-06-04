@@ -333,6 +333,183 @@ Microsoft SQL Server 是业内领先的数据库平台之一，SQL Server 2017 �
 
 
 
+# 5.零度课程目录
+
+## 1 .NET 平台指南系列视频教程
+
+
+
+### 1.[第01期-理解 .NET 平台体系结构](https://www.xcode.me/video/97d3191d56b0455aa1b0636b33d83875)
+
+
+
+理解构建多种应用的开源开发平台，微软 .NET 平台开源仓库，如何优雅的安装 .NET 平台，关于 .NET 平台的发布与计划，理解运行时和 SDK 的区别，检查 .NET 版本信息，理解 X86、X64 和 ARM64 处理器架构的区别，使用微软提供的工具删除并卸载过时的 .NET 版本，管理 .NET 项目和项模板。
+
+
+
+### 2.[第02期-开发者工具命令行接口](https://www.xcode.me/video/f234820e25dc475ca65f1471399b9afa)
+
+
+
+使用命令行接口 CLI 工具链开发、生成、运行和发布跨平台 .NET 应用程序，创建解决方案，创建项目和类库，将项目添加到解决方案中，向项目中添加包引用，添加项目到项目引用，生成项目及其所有依赖项，单元测试项目，运行项目，监控项目，发布部署项目，打包项目，工作负载管理，让命令行支持智能提示。
+
+
+
+
+
+-  创建解决方案  
+
+  ~~~ powershell
+  dotnet new sln -n MySolution
+  ~~~
+
+- 创建项目和类库  
+
+  ~~~ powershell
+  dotnet new console -o MyApp
+  dotnet new classlib -o MyLib1
+  dotnet new classlib -o MyLib2
+  ~~~
+
+- 将项目添加到解决方案中
+
+  ~~~ powershell
+  dotnet sln MySolution.sln add MyApp\MyApp.csproj
+  dotnet sln MySolution.sln add MyLib1\MyLib1.csproj --solution-folder MyLibs
+  dotnet sln MySolution.sln add MyLib2\MyLib2.csproj --solution-folder MyLibs
+  ~~~
+
+- 向项目中添加包引用  
+
+  ~~~ powershell
+  dotnet add MyApp\MyApp.csproj package Newtonsoft.Json
+  dotnet remove MyApp\MyApp.csproj package Newtonsoft.Json
+  dotnet list MyApp\MyApp.csproj package
+  ~~~
+
+- 添加项目到项目引用  
+
+  ~~~ powershell
+  dotnet add MyApp\MyApp.csproj reference MyLib1\MyLib1.csproj
+  dotnet add MyApp\MyApp.csproj reference MyLib2\MyLib2.csproj
+  dotnet remove MyApp\MyApp.csproj reference MyLib2\MyLib2.csproj
+  dotnet list MyApp\MyApp.csproj reference
+  ~~~
+
+- 生成项目及其所有依赖项  
+
+  ~~~ powershell
+  dotnet format
+  dotnet build
+  dotnet restore 隐式调用
+  dotnet clean
+  ~~~
+
+- 单元测试项目  
+
+  ~~~powershell
+  dotnet new xunit -o MyAppTest
+  dotnet sln Mysolution.sln add MyAppTest\MyAppTest.csproj
+  dotnet test
+  dotnet watch test --project ./MyAppTest
+  ~~~
+
+- 运行项目  
+
+  ~~~powershell
+  dotnet run --project ./MyApp
+  dotnet run --project ./MyApp --property:Configuration=Release
+  dotnet watch run --project ./MyApp
+  ~~~
+
+- 发布部署项目  
+
+  ~~~powershell
+  dotnet publish
+  ~~~
+
+- 列出最新可用的 SDK 版本  
+
+  ~~~powershell
+  dotnet sdk check
+  ~~~
+
+- 工作负载管理  
+
+  ~~~powershell
+  dotnet workload
+  ~~~
+
+- 管理工具扩展  
+
+  ~~~powershell
+  dotnet tool list -g
+  ~~~
+
+- 打包项目  
+
+  ~~~powershell
+  dotnet pack
+  ~~~
+
+- 管理 NUGET 包  
+
+  ~~~powershell
+  dotnet nuget
+  ~~~
+
+
+
+
+
+### 3.[第03期-理解平台实现和项目文件](https://www.xcode.me/video/4849ba8121cd474e894c1afc15d3859e)
+
+
+
+基于 .NET 的应用是针对一个或多个 .NET 实现开发的，每个实现都具有不同的组件，一个或多个运行时 CLR 运行时，基类库，应用程序框架库，一些开发工具，项目与软件开发工具包 SDK 关联，每个项目 SDK 都是一组 MSBuild 目标和相关的任务，它们负责编译、打包和发布代码，使用不同的方式管理引用包。
+
+
+
+
+
+### 4.[第04期-揭秘跨平台调试符号文件](https://www.xcode.me/video/7b6037ec8a6546a99748d00b046d44d1)
+
+PDB 文件是编译器生成的辅助文件，符号可用于调试和其它诊断工具，符号是源代码和编译器生成的二进制文件之间的映射，调试符号生成设置，查看调试器中程序集所关联的符号文件，可执行文件 PE 和 COFF 头部结构，使用工具查看 PDB 文件结构，关于 PDF 符号下载工具。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
