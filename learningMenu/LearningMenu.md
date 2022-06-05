@@ -484,6 +484,125 @@ PDB 文件是编译器生成的辅助文件，符号可用于调试和其它诊�
 
 
 
+## 2.深入 C# 语言规范系列视频教程
+
+### [第13期-可为空的值类型](https://www.xcode.me/video/bb113768a73e43e7a70dd1b5e53b2ff8)
+
+
+
+需要表示基础值类型的未定义值时，使用可空的值类型，声明和赋值，检查可为空值类型的实例，从可为空的值类型转换为基础类型，提升的运算符，如何确定可为空的值类型。
+
+- 类型检查
+
+~~~ c#
+int? a = 42;
+if (a is int valueOfA)
+{
+Console.WriteLine($"a is {valueOfA}");
+}
+else
+{
+Console.WriteLine("a does not have a value");
+}
+~~~
+
+- Nullable<T>.HasValue 判断是否有值
+
+~~~c#
+int? b = 10;
+if (b.HasValue)
+{
+    Console.WriteLine($"b is {b.Value}");
+}
+else
+{
+    Console.WriteLine("b does not have a value");
+}
+~~~
+
+
+
+- 可空布尔值的运算比较
+
+![image-20220604131758462](LearningMenu.assets/image-20220604131758462.png)
+
+
+
+- 判断某个类型是否为可空的值类型
+
+获取可以为 null 的类型的基础类型参数
+
+~~~ c#
+bool IsNullable(Type type) => Nullable.GetUnderlyingType(type) != null;
+
+Console.WriteLine(IsNullable(typeof(int?)));
+~~~
+
+
+
+- 请勿使用 is 运算符来确定实例是否是可为空的值类型。  
+- 切勿使用 Object.GetType 获取可空值类型
+
+
+
+
+
+### [第14期-可空的引用类型](https://www.xcode.me/video/51ef4c7ddf784226a44014fbaaced881)
+
+
+
+**太恶心了，能不用就不用**
+
+
+
+可空的引用类型可帮助开发者在编译期间发现潜在的异常，在项目和源码级别开启可空的引用类型支持，可空类型的判断，包容运算符，合并运算符，条件运算符，使用分析器检查可空性，使用特性注解的方式表达可空意图，改变分析器行为，可空的引用类型在 EF Core 中的应用。
+
+
+
+- \#nullable disable：将可为空注释和警告上下文设置为“已禁用”。  
+- \#nullable disable：将可为空注释和警告上下文设置为“已禁用”。  
+
+
+
+~~~ c#
+object? obj = null;
+
+
+if (obj != null)
+{
+    string? str = obj.ToString();
+
+    Console.WriteLine(str);
+}
+~~~
+
+
+
+- 强制将一个不为null的值设置为null
+
+~~~ c#
+object obj2 = null!;
+~~~
+
+
+
+- 合并运算符
+
+~~~ c#
+object? obj = null;
+
+object obj3 = obj ?? 3;
+
+object? obj4 = null;
+obj4 ??= 3;
+~~~
+
+
+
+
+
+
+
 
 
 
