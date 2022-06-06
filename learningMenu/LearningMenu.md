@@ -325,6 +325,14 @@ Microsoft SQL Server 是业内领先的数据库平台之一，SQL Server 2017 �
 
 [4.HTTP HEADER 之 ORIGIN 深入理解](https://zqblog.beaf.tech/http-origin-header/)
 
+5[.NET Core中JWT+OAuth2.0实现SSO，附完整源码（.NET6）](https://www.cnblogs.com/wei325/p/16316004.html)
+
+
+
+
+
+
+
 
 
 
