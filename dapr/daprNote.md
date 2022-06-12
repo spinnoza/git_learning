@@ -24,6 +24,133 @@ dapr init --slim --from-dir C:\daprbundle
 
 
 
+## 3.定义一个 Dapr 组件 (不依赖于Docker 容器)
+
+
+
+- 初始化 Dapr 运行时  
+
+~~~ powershell
+dapr init --slim --from-dir C:\daprbundle
+~~~
+
+
+
+- 默认组件目录  
+
+~~~ tex
+explorer "%USERPROFILE%\.dapr\components"
+~~~
+
+
+
+- 创建组件定义文件  (在默认组件目录)
+
+localSecretStore.yaml  
+
+~~~ yaml
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: my-secret-store
+  namespace: default
+spec:
+  type: secretstores.local.file
+  version: v1
+  metadata:
+  - name: secretsFile
+    value: d:/mysecrets.json
+  - name: nestedSeparator
+    value: ":"
+~~~
+
+
+
+mysecrets.json
+
+~~~ json
+{
+"my-secret" : "I'm Batman"
+}  
+~~~
+
+
+
+- 运行 Dapr Sidecar  
+
+~~~ powershell
+dapr run --app-id myapp --dapr-http-port 3500 --dapr-grpc-port 50001 --
+components-path ./my-components
+~~~
+
+
+
+- HTTP 请求测试  
+
+~~~ powershell
+ curl http://localhost:49295/v1.0/secrets/my-secret-store/my-secret
+~~~
+
+
+
+![image-20220612215823481](daprNote.assets/image-20220612215823481.png)
+
+
+
+- 密钥存储 API 参考  
+
+https://docs.dapr.io/zh-hans/reference/api/secrets_api  
+
+
+
+使用基于 Dapr 的 .NET SDK 开发包  
+
+https://www.nuget.org/profiles/dapr.io  
+
+
+
+~~~ c#
+var client = new DaprClientBuilder().Build();
+var secret = await client.GetSecretAsync("my-secret-store", "my-secret");
+if (secret.TryGetValue("my-secret", out string? val))
+{
+    Console.WriteLine(val);
+}
+Console.ReadKey();
+~~~
+
+
+
+- 云厂商提供的密钥管理服务
+
+https://www.aliyun.com/product/kms
+
+
+
+边车和调用程序一同启动
+
+~~~ powershell
+ dapr run --app-id myapp --dapr-http-port 3500 --dapr-grpc-port 50001 -- dotnet run
+~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
