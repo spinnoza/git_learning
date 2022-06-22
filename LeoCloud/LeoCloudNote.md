@@ -50,3 +50,13 @@ dotnet add Tests/ApplicationCore.Tests reference ApplicationCore
 
 
 
+# 3.entityframework 使用mysql
+
+
+
+1. 安装包
+
+   ~~~ shell
+   Install-Package MySql.EntityFrameworkCore -Version 5.0.0+m8.0.23
+   ~~~
+
