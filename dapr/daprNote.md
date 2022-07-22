@@ -141,19 +141,70 @@ https://www.aliyun.com/product/kms
 
 
 
+- 启动服务，启动dapr
+
+~~~ powershell
+dapr run --app-id orderprocessor --dapr-http-port 3500 --dapr-grpc-port 50001 --app-port 7048 --app-protocol http --app-ssl dotnet run
+~~~
+
+
+
+- 服务调用
+
+http://localhost:<daprPort>/v1.0/invoke/<appId>/method/<method-name>  
+
+http://localhost:3500/v1.0/invoke/orderprocessor/method/api/orders
+
+
+
+- 使用 Dapr 命令行工具  
+
+dapr invoke --app-id orderprocessor --method api/orders --verb GET
+
+
+
+- 推荐使用 Postman 工具  
 
 
 
 
+### 不使用 SDK 调用 Dapr 服务接口  
+
+~~~ c#
+var httpClient = new HttpClient();
+
+httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
+
+httpClient.DefaultRequestHeaders.Add("dapr-app-id", "orderprocessor");
+
+JsonSerializerOptions options = new(JsonSerializerDefaults.Web)
+{
+    WriteIndented = true
+};
+
+var orders = await httpClient.GetFromJsonAsync<IEnumerable<Order>>("http://localhost:3501/api/orders", options);
+~~~
 
 
 
+### 使用 SDK 调用 Dapr 服务接口  
+
+- 使用 HttpClient 调用 HTTP 服务  
 
 
+~~~ c#
+var httpClient = DaprClient.CreateInvokeHttpClient(daprEndpoint: "http://localhost:3501", appId: "orderprocessor");
 
+var orders = await httpClient.GetFromJsonAsync<IEnumerable<Order>>("api/orders");
+~~~
 
+- 使用 DaprClient 调用 HTTP 服务
 
+~~~ c#
+var daprClient = new DaprClientBuilder().UseGrpcEndpoint("http://localhost:50002").Build();
 
+var orders = await daprClient.InvokeMethodAsync<IEnumerable<Order>>(HttpMethod.Get, "orderprocessor", "api/Orders");
+~~~
 
 
 
